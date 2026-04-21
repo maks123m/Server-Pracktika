@@ -24,38 +24,32 @@
 
 <h1>Список всех сотрудников</h1>
 
-<a href="#" class="add-button">+ Добавить сотрудника</a>
+<a href="<?= app()->route->getUrl('/user/add') ?>" class="add-button">+ Добавить сотрудника</a>
 
 <div class="table-container">
     <table>
         <thead>
             <tr>
-                <th style="width: 10%;">№</th>
-                <th style="width: 25%;">ФИО</th>
-                <th style="width: 25%;">Подразделение</th>
-                <th style="width: 20%;">Телефон</th>
-                <th style="width: 20%;">Действие</th>
+                <th>№</th>
+                <th>ФИО</th>
+                <th>Логин</th>
+                <th>Роль</th>
+                <th>Действие</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Васильков А. В.</td>
-                <td>Бухгалтерия</td>
-                <td>8 999 999 9999</td>
-                <td>
-                    <a href="#" class="action-delete">Удалить</a>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Сергеев Ю. Г.</td>
-                <td>IT отдел</td>
-                <td>8 999 999 9999</td>
-                <td>
-                    <a href="#" class="action-delete">Удалить</a>
-                </td>
-            </tr>
+            <?php foreach ($users as $user): ?>
+                <tr>
+                    <td><?= $user->id ?></td>
+                    <td><?= $user->name ?></td>
+                    <td><?= $user->login ?></td>
+                    <td><?= $user->role ?></td>
+                    <td>
+                        <a href="<?= app()->route->getUrl('/user/delete?id=' . $user->id) ?>" 
+                           class="action-delete" onclick="return confirm('Удалить?')">Удалить</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
         </tbody>
     </table>
 </div>

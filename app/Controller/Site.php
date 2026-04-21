@@ -32,10 +32,8 @@ class Site
 
     public function users(): string
     {
-        if (app()->auth->user()->role !== 'admin') {
-            app()->route->redirect('/hello');
-        }
-        return new View('site.users');
+        $users = \Model\User::all();
+        return new View('site.users', ['users' => $users]);
     }
     public function userAdd(): string
     {
