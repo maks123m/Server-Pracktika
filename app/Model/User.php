@@ -15,7 +15,8 @@ class User extends Model implements IdentityInterface
        'name',
        'login',
        'password',
-       'role'
+       'role',
+       'subdivision_id'
    ];
 
    protected static function booted()

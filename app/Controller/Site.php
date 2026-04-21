@@ -37,6 +37,27 @@ class Site
         }
         return new View('site.users');
     }
+    public function userAdd(): string
+    {
+        $subdivisions = \Model\Subdivision::all();
+        return new View('site.userAdd', ['subdivisions' => $subdivisions]);
+    }
+
+    public function userCreate(Request $request): void
+    {
+        if ($request->method === 'POST') {
+            if (\Model\User::create($request->all())) {
+                app()->route->redirect('/users');
+            }
+        }
+    }
+
+    public function userDelete(Request $request): void
+    {
+        \Model\User::destroy($request->get('id'));
+        app()->route->redirect('/users');
+    }
+
     public function subdivisions(): string
     {
         if (app()->auth->user()->role !== 'admin') {
@@ -64,18 +85,18 @@ class Site
         }
     }
     public function subdivisionDelete(Request $request): void
-{
-    
-    if (app()->auth->user()->role !== 'admin') {
-        app()->route->redirect('/hello');
+    {
+        
+        if (app()->auth->user()->role !== 'admin') {
+            app()->route->redirect('/hello');
+        }
+
+        $subdivision = \Model\Subdivision::find($request->get('id'));
+
+        if ($subdivision) {
+            $subdivision->delete();
+        }
+
+        app()->route->redirect('/subdivisions');
     }
-
-    $subdivision = \Model\Subdivision::find($request->get('id'));
-
-    if ($subdivision) {
-        $subdivision->delete();
-    }
-
-    app()->route->redirect('/subdivisions');
-}
 }
