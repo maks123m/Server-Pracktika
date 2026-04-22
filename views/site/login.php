@@ -67,6 +67,7 @@
     <?php endif; ?>
 
     <form method="post" style="display: flex; flex-direction: column; align-items: center;">
+        <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
         <input type="text" name="login" class="input-field" placeholder="Логин" required>
         <input type="password" name="password" class="input-field" placeholder="Пароль" required>
         <button type="submit" class="btn-login">Войти</button>
