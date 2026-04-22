@@ -16,3 +16,11 @@ Route::add('GET', '/subdivisions', [Controller\Site::class, 'subdivisions']);
 Route::add('GET', '/subdivision/add', [Controller\Site::class, 'subdivisionAdd']);
 Route::add('POST', '/subdivision/add', [Controller\Site::class, 'subdivisionCreate']);
 Route::add('GET', '/subdivision/delete', [Controller\Site::class, 'subdivisionDelete']);
+
+Route::add('GET', '/order/add', [Controller\Site::class, 'orderAdd']);
+Route::add('POST', '/order/add', [Controller\Site::class, 'orderCreate']);
+
+Route::add('GET', '/suppliers', [Controller\Site::class, 'suppliers']);
+
+Route::add('GET', '/write-off', [Controller\Site::class, 'writeOffAdd']);
+Route::add('POST', '/write-off', [Controller\Site::class, 'writeOffCreate']);

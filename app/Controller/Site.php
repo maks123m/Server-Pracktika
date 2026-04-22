@@ -8,8 +8,34 @@ use Src\Auth\Auth;
 
 class Site
 {
-    public function hello(): string {
-        return new View('site.hello');
+    public function hello(): string
+    {
+        $totalItems = \Model\Product::sum('quantity') ?? 0;
+
+        $lowStockProducts = \Model\Product::whereRaw('quantity <= min_norm')->get();
+        $lowStockCount = $lowStockProducts->count();
+        
+        $recentDeliveries = \Model\Delivery::orderBy('id', 'desc')->limit(5)->get();
+        $recentWriteOffs = \Model\WriteOff::orderBy('id', 'desc')->limit(5)->get();
+        $totalWriteOffs = \Model\WriteOff::count();
+        $totalSuppliers = \Model\Supplier::count();
+        
+
+        return new View('site.hello', [
+            'totalItems' => $totalItems,
+            'lowStockCount' => $lowStockCount,
+            'totalSuppliers' => $totalSuppliers,
+            'ordersToRequest' => $lowStockProducts,
+            'recentDeliveries' => $recentDeliveries,
+            'monthlyWriteOffs' => $totalWriteOffs,
+            'recentWriteOffs' => $recentWriteOffs,
+        ]);
+    }
+
+    public function suppliers(): string
+    {
+        $suppliers = \Model\Supplier::all();
+        return new View('site.suppliers', ['suppliers' => $suppliers]);
     }
 
     public function login(Request $request): string {
@@ -96,5 +122,73 @@ class Site
         }
 
         app()->route->redirect('/subdivisions');
+    }
+
+    public function orderAdd(): string
+    {
+        $suppliers = \Model\Supplier::all();
+        $products = \Model\Product::all();
+
+        return new View('site.orderAdd', [
+            'suppliers' => $suppliers,
+            'products' => $products
+        ]);
+    }
+
+    public function orderCreate(Request $request): void
+    {
+        if ($request->method === 'POST') {
+            $data = $request->all();
+            
+            $product = \Model\Product::find($data['product_id']);
+            
+            if ($product) {
+                \Model\Delivery::create([
+                    'name' => $product->name,
+                    'quantity' => $data['quantity'],
+                    'price' => $product->price,
+                    'supplier' => $data['supplier'],
+                    'date' => date('Y-m-d')
+                ]);
+
+                $product->increment('quantity', $data['quantity']);
+            }
+
+            app()->route->redirect('/hello');
+        }
+    }
+
+    public function writeOffAdd(): string
+    {
+        $products = \Model\Product::all();
+        $subdivisions = \Model\Subdivision::all();
+
+        return new View('site.writeOffAdd', [
+            'products' => $products,
+            'subdivisions' => $subdivisions
+        ]);
+    }
+
+    public function writeOffCreate(Request $request): void
+    {
+        if ($request->method === 'POST') {
+            $data = $request->all();
+            $product = \Model\Product::find($data['product_id']);
+
+            if ($product && $product->quantity >= $data['quantity']) {
+                $product->decrement('quantity', $data['quantity']);
+
+                \Model\WriteOff::create([
+                    'product_id' => $product->id,
+                    'name' => $product->name,
+                    'quantity'=> $data['quantity'],
+                    'employee' => $data['employee'],
+                    'department' => $data['department'],
+                    'date' => date('Y-m-d')
+                ]);
+
+                app()->route->redirect('/hello');
+            }
+        }
     }
 }

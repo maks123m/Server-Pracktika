@@ -7,4 +7,5 @@ class Subdivision extends Model
 {
     public $timestamps = false;
     protected $fillable = ['name'];
+    protected $table = 'subdivisions';
 }
