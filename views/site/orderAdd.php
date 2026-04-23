@@ -26,7 +26,7 @@
 <div class="order-wrapper">
     <form class="container" method="POST">
         <h2>Заказать товар</h2>
-
+        <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
         <select name="product_id" id="product-select" class="input-field" required>
             <option value="" disabled selected>Выберите товар</option>
             <?php foreach ($products as $product): ?>
@@ -46,7 +46,6 @@
         </select>
 
         <div class="price-label">Итоговая цена: <span id="total-price">0.00</span> ₽</div>
-
         <button type="submit" class="btn-order">Заказать</button>
     </form>
 </div>

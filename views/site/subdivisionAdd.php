@@ -55,6 +55,7 @@
 <div class="add-form-wrapper">
     <form class="container-form" method="POST">
         <h2>Новое подразделение</h2>
+        <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
         <input type="text" name="name" class="input-field" placeholder="Название" required>
         <button type="submit" class="btn-add">Добавить</button>
     </form>

@@ -22,7 +22,7 @@
 <div class="wrapper">
     <form class="container" method="POST" style="height: auto; padding: 40px;">
         <h2>Списать товар</h2>
-        
+        <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
         <select name="product_id" class="input-field" required>
             <option value="" disabled selected>Выберите товар</option>
             <?php foreach ($products as $product): ?>

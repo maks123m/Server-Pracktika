@@ -68,7 +68,7 @@
 
 <div class="auth-container">
     <h2>Регистрация</h2>
-    
+    <pre><?= $message ?? ''; ?></pre>
     <form method="post" style="display: flex; flex-direction: column; align-items: center;">
         <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
         <input type="text" name="name" class="input-field" placeholder="ФИО" required>
