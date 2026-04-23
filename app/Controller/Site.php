@@ -21,7 +21,6 @@ class Site
         $totalWriteOffs = \Model\WriteOff::count();
         $totalSuppliers = \Model\Supplier::count();
 
-
         return new View('site.hello', [
             'totalItems' => $totalItems,
             'lowStockCount' => $lowStockCount,
@@ -67,7 +66,7 @@ class Site
             app()->route->redirect('/login');
         }
     }
-    return new View('site.signup');
+        return new View('site.signup');
     }
 
 
@@ -104,19 +103,12 @@ class Site
 
     public function subdivisions(): string
     {
-        if (app()->auth->user()->role !== 'admin') {
-            app()->route->redirect('/hello');
-        }
-
         $subdivisions = \Model\Subdivision::all();
         return new View('site.subdivisions', ['subdivisions' => $subdivisions]);
     }
 
     public function subdivisionAdd(): string
     {
-        if (app()->auth->user()->role !== 'admin') {
-            app()->route->redirect('/hello');
-        }
         return new View('site.subdivisionAdd');
     }
 
@@ -130,11 +122,6 @@ class Site
     }
     public function subdivisionDelete(Request $request): void
     {
-        
-        if (app()->auth->user()->role !== 'admin') {
-            app()->route->redirect('/hello');
-        }
-
         $subdivision = \Model\Subdivision::find($request->get('id'));
 
         if ($subdivision) {
@@ -144,22 +131,10 @@ class Site
         app()->route->redirect('/subdivisions');
     }
 
-    public function orderAdd(): string
-    {
-        $suppliers = \Model\Supplier::all();
-        $products = \Model\Product::all();
-
-        return new View('site.orderAdd', [
-            'suppliers' => $suppliers,
-            'products' => $products
-        ]);
-    }
-
-    public function orderCreate(Request $request): void
+    public function orderAdd(Request $request): string
     {
         if ($request->method === 'POST') {
             $data = $request->all();
-            
             $product = \Model\Product::find($data['product_id']);
             
             if ($product) {
@@ -170,45 +145,63 @@ class Site
                     'supplier' => $data['supplier'],
                     'date' => date('Y-m-d')
                 ]);
-
                 $product->increment('quantity', $data['quantity']);
+                app()->route->redirect('/hello');
             }
-
-            app()->route->redirect('/hello');
         }
-    }
 
-    public function writeOffAdd(): string
-    {
-        $products = \Model\Product::all();
-        $subdivisions = \Model\Subdivision::all();
-
-        return new View('site.writeOffAdd', [
-            'products' => $products,
-            'subdivisions' => $subdivisions
+        return new View('site.orderAdd', [
+            'suppliers' => \Model\Supplier::all(),
+            'products' => \Model\Product::all()
         ]);
     }
 
-    public function writeOffCreate(Request $request): void
+    public function writeOffAdd(Request $request): string
     {
         if ($request->method === 'POST') {
+            $validator = new \Src\Validator\Validator($request->all(), [
+                'product_id' => ['required'],
+                'quantity'   => ['required'],
+                'employee'   => ['required'],
+                'department' => ['required'],
+            ], [
+                'required' => 'Поле :field обязательно для заполнения',
+                'number'   => 'Поле :field должно быть числом',
+            ]);
+
+            if ($validator->fails()) {
+                return new View('site.writeOffAdd', [
+                    'products' => \Model\Product::all(),
+                    'subdivisions' => \Model\Subdivision::all(),
+                    'message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)
+                ]);
+            }
+
             $data = $request->all();
             $product = \Model\Product::find($data['product_id']);
 
             if ($product && $product->quantity >= $data['quantity']) {
                 $product->decrement('quantity', $data['quantity']);
-
                 \Model\WriteOff::create([
                     'product_id' => $product->id,
-                    'name' => $product->name,
-                    'quantity'=> $data['quantity'],
-                    'employee' => $data['employee'],
+                    'name'       => $product->name,
+                    'quantity'   => $data['quantity'],
+                    'employee'   => $data['employee'],
                     'department' => $data['department'],
-                    'date' => date('Y-m-d')
+                    'date'       => date('Y-m-d')
                 ]);
-
                 app()->route->redirect('/hello');
             }
+            return new View('site.writeOffAdd', [
+                'products' => \Model\Product::all(),
+                'subdivisions' => \Model\Subdivision::all(),
+                'message' => 'Недостаточно товара на складе'
+            ]);
         }
+
+        return new View('site.writeOffAdd', [
+            'products' => \Model\Product::all(),
+            'subdivisions' => \Model\Subdivision::all()
+        ]);
     }
 }
