@@ -19,13 +19,12 @@ class User extends Model implements IdentityInterface
        'subdivision_id'
    ];
 
-   protected static function booted()
-   {
-       static::created(function ($user) {
-           $user->password = md5($user->password);
-           $user->save();
-       });
-   }
+    protected static function booted()
+    {
+        static::creating(function ($user) {
+            $user->password = md5($user->password);
+        });
+    }
    public function findIdentity(int $id)
    {
        return self::where('id', $id)->first();

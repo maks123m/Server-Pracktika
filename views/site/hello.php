@@ -112,7 +112,7 @@
                             <td><?= $delivery->name ?></td>
                             <td><?= $delivery->supplier ?></td>
                             <td><?= $delivery->quantity ?> <?= $unit ?></td>
-                            <td><?= number_format($product->price, 2, '.', ' ') ?> ₽</td>
+                            <td><?= number_format($delivery->price, 2, '.', ' ') ?> ₽</td>
                             <td><?= date('d.m.Y', strtotime($delivery->date)) ?></td>
                         </tr>
                     <?php endforeach; ?>

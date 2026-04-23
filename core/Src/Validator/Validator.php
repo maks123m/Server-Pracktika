@@ -4,15 +4,10 @@ namespace Src\Validator;
 
 class Validator
 {
-   //Разрешенные валидаторы
    private array $validators = [];
-   //Итоговые ошибки
    private array $errors = [];
-   //Проверяемые поля
    private array $fields = [];
-   //Массив правил
    private array $rules = [];
-   //Кастомные сообщения
    private array $messages = [];
 
    public function __construct(array $fields, array $rules, array $messages = [])

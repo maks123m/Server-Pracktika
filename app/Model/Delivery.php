@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 class Delivery extends Model
 {
     public $timestamps = false;
-    protected $fillable = ['name', 'quantity', 'supplier', 'date'];
+    protected $fillable = ['name', 'quantity', 'supplier', 'date', 'price'];
 
     public function product()
 {

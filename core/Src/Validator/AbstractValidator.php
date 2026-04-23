@@ -10,7 +10,7 @@ abstract class AbstractValidator
    protected array $messageKeys = [];
    protected string $message = '';
 
-   public function __construct(string $fieldName, $value, $args = [], string $message = null)
+   public function __construct(string $fieldName, $value, $args = [])
    {
        $this->field = $fieldName;
        $this->value = $value;
