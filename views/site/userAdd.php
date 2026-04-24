@@ -55,18 +55,22 @@
 </style>
 
 <div class="add-form-wrapper">
-    <form class="container-form" method="POST">
+    <form class="container-form" method="POST" enctype="multipart/form-data">
         <h2>Новый сотрудник</h2>
         <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
+        
         <input type="text" name="name" class="input-field" placeholder="ФИО" required>
         <input type="text" name="login" class="input-field" placeholder="Логин" required>
         <input type="password" name="password" class="input-field" placeholder="Пароль" required>
         
-    <select name="role" class="input-field" required>
-        <option value="" disabled selected>Выберите роль</option>
-        <option value="admin">Администратор</option>
-        <option value="storekeeper">Кладовщик</option> 
-    </select>
+        <label style="margin-bottom: 10px; font-size: 18px;">Фото профиля:</label>
+        <input type="file" name="image" class="input-field" style="padding-top: 5px;">
+
+        <select name="role" class="input-field" required>
+            <option value="" disabled selected>Выберите роль</option>
+            <option value="admin">Администратор</option>
+            <option value="storekeeper">Кладовщик</option> 
+        </select>
 
         <select name="subdivision_id" class="input-field" required>
             <option value="" disabled selected>Подразделение</option>

@@ -31,6 +31,7 @@
         <thead>
             <tr>
                 <th>№</th>
+                <th>Фото</th>
                 <th>ФИО</th>
                 <th>Логин</th>
                 <th>Роль</th>
@@ -41,6 +42,13 @@
             <?php foreach ($users as $user): ?>
                 <tr>
                     <td><?= $user->id ?></td>
+                    <td>
+                    <?php if ($user->image): ?>
+                        <img src="<?= $user->image ?>" alt="avatar" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover;">
+                    <?php else: ?>
+                        <div style="width: 70px; height: 70px; background: #ccc; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px;">No фото</div>
+                    <?php endif; ?>
+                    </td>
                     <td><?= $user->name ?></td>
                     <td><?= $user->login ?></td>
                     <td><?= $user->role ?></td>

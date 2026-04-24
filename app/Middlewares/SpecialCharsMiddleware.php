@@ -4,13 +4,12 @@ namespace Middlewares;
 
 use Src\Request;
 
-class SpecialCharsMiddleware
-{
-   public function handle(Request $request):Request
-   {
-       foreach ($request->all() as $key => $value) {
-           $request->set($key, is_string($value) ? htmlspecialchars($value) : $value);
-       }
-       return $request;
-   }
+class SpecialCharsMiddleware {
+    public function handle(Request $request) {
+        if ($request->method === 'POST') {
+            foreach ($_POST as $key => $value) {
+                if (is_string($value)) $_POST[$key] = htmlspecialchars($value, ENT_QUOTES);
+            }
+        }
+    }
 }

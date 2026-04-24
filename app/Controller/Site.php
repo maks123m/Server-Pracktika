@@ -44,31 +44,49 @@ class Site
         return new View('site.login', ['message' => 'Неверный логин или пароль']);
     }
 
-    public function signup(Request $request): string
-    {
+public function signup(Request $request): string
+{
     if ($request->method === 'POST') {
+        $data = $request->all();
 
-        $validator = new Validator($request->all(), [
+        $validator = new Validator($data, [
             'name' => ['required'],
             'login' => ['required', 'unique:users,login'],
-            'password' => ['required']
+            'password' => ['required'],
+            'image' => ['img_size', 'img_ext'],
         ], [
-            'required' => 'Поле :field пусто',
-            'unique' => 'Поле :field должно быть уникально'
+            'required' => 'Поле :field обязательно',
+            'unique' => 'Логин уже занят',
         ]);
 
-        if($validator->fails()){
-            return new View('site.signup',
-                ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+        if ($validator->fails()) {
+            return new View('site.signup', [
+                'message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)
+            ]);
+        }
+        unset($data['image']);
+
+        if (!empty($_FILES['image']['name']) && $_FILES['image']['error'] === 0) {
+            $file = $_FILES['image'];
+            $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+            $fileName = time() . '.' . $extension;
+            $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/public/uploads/';
+
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
+
+            if (move_uploaded_file($file['tmp_name'], $uploadDir . $fileName)) {
+                $data['image'] = '/public/uploads/' . $fileName;
+            }
         }
 
-        if (User::create($request->all())) {
+        if (User::create($data)) {
             app()->route->redirect('/login');
         }
     }
-        return new View('site.signup');
-    }
-
+    return new View('site.signup');
+}
 
     public function logout(): void {
         Auth::logout();
@@ -89,7 +107,40 @@ class Site
     public function userCreate(Request $request): void
     {
         if ($request->method === 'POST') {
-            if (\Model\User::create($request->all())) {
+            $data = $request->all();
+
+            $validator = new Validator($data, [
+                'name' => ['required'],
+                'login' => ['required', 'unique:users,login'],
+                'password' => ['required'],
+                'image' => ['img_size', 'img_ext'],
+            ], [
+                'required' => 'Поле :field обязательно',
+                'unique' => 'Логин уже занят',
+            ]);
+
+            if ($validator->fails()) {
+                die(json_encode($validator->errors(), JSON_UNESCAPED_UNICODE));
+            }
+
+            unset($data['image']);
+
+            if (!empty($_FILES['image']['name']) && $_FILES['image']['error'] === 0) {
+                $file = $_FILES['image'];
+                $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+                $fileName = time() . '.' . $extension;
+
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/public/uploads/';
+
+                if (!is_dir($uploadDir)) {
+                    mkdir($uploadDir, 0777, true);
+                }
+
+                if (move_uploaded_file($file['tmp_name'], $uploadDir . $fileName)) {
+                    $data['image'] = '/public/uploads/' . $fileName;
+                }
+            }
+            if (\Model\User::create($data)) {
                 app()->route->redirect('/users');
             }
         }

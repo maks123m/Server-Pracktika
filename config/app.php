@@ -7,8 +7,10 @@ return [
        'admin' => \Middlewares\AdminMiddleware::class,
     ],
     'validators' => [
-       'required' => \Validators\RequireValidator::class,
-       'unique' => \Validators\UniqueValidator::class,
+        'required' => \Validators\RequireValidator::class,
+        'unique' => \Validators\UniqueValidator::class,
+        'img_size' => \Validators\ImgSizeValidator::class,
+        'img_ext' => \Validators\ImgExtValidator::class,
     ],
     'routeAppMiddleware' => [
         'csrf' => \Middlewares\CSRFMiddleware::class,
