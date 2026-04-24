@@ -27,10 +27,10 @@ class Request
        $this->body[$field] = $value;
    }
 
-   public function get($field)
-   {
-       return $this->body[$field];
-   }
+    public function get($field)
+    {
+        return $this->body[$field] ?? null;
+    }
 
    public function files(): array
    {

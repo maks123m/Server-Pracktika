@@ -7,8 +7,8 @@
         body { margin: 0; padding: 0; background-color: #ffffff; font-family: Arial, sans-serif; display: flex; flex-direction: column; align-items: center; }
         .header { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 25px 50px; box-sizing: border-box; }
         .logo { font-size: 18px; color: #000; }
-        .nav-menu { display: flex; gap: 40px; border: 2px solid #4F90FF; border-radius: 15px; padding: 15px 45px; align-items: center; } /* Добавили align-items */
-        .nav-item { text-decoration: none; color: #000; font-size: 18px; display: flex; align-items: center; gap: 10px; } /* Добавили gap для отступа от фото */
+        .nav-menu { display: flex; gap: 40px; border: 2px solid #4F90FF; border-radius: 15px; padding: 15px 45px; align-items: center; }
+        .nav-item { text-decoration: none; color: #000; font-size: 18px; display: flex; align-items: center; gap: 10px; }
         .nav-item.active { color: #4F90FF; font-weight: bold; }
         .main-content { width: 100%; display: flex; flex-direction: column; align-items: center; margin-top: 60px; }
         

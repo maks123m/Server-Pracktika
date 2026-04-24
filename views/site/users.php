@@ -23,6 +23,21 @@
 </style>
 
 <h1>Список всех сотрудников</h1>
+<div style="margin-bottom: 30px; width: 100%; display: flex; justify-content: center;">
+    <form method="GET" style="display: flex; gap: 10px; align-items: center;">
+        <input type="text" name="search" placeholder="Поиск по ФИО или логину..." 
+               value="<?= $_GET['search'] ?? '' ?>" 
+               style="width: 400px; height: 40px; border: 2px solid #4F90FF; border-radius: 10px; padding: 0 15px; font-size: 16px; outline: none;">
+        
+        <button type="submit" style="height: 44px; background-color: #4F90FF; color: white; border: none; border-radius: 10px; padding: 0 25px; cursor: pointer; font-size: 16px;">
+            Найти
+        </button>
+        
+        <?php if (isset($_GET['search'])): ?>
+            <a href="/users" style="text-decoration: none; color: #666; font-size: 14px;">Сбросить</a>
+        <?php endif; ?>
+    </form>
+</div>
 
 <a href="<?= app()->route->getUrl('/user/add') ?>" class="add-button">+ Добавить сотрудника</a>
 
