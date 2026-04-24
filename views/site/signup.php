@@ -102,7 +102,6 @@
             <option value="admin">Администратор</option>
         </select>
 
-        <div class="file-label">Фото профиля:</div>
         <input type="file" name="image" class="input-field input-file">
 
         <button type="submit" class="btn-register">Зарегистрироваться</button>

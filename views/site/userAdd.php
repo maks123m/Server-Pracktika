@@ -63,7 +63,6 @@
         <input type="text" name="login" class="input-field" placeholder="Логин" required>
         <input type="password" name="password" class="input-field" placeholder="Пароль" required>
         
-        <label style="margin-bottom: 10px; font-size: 18px;">Фото профиля:</label>
         <input type="file" name="image" class="input-field" style="padding-top: 5px;">
 
         <select name="role" class="input-field" required>

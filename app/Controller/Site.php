@@ -6,6 +6,7 @@ use Src\Request;
 use Model\User;
 use Src\Auth\Auth;
 use Src\Validator\Validator;
+use function Collect\collection;
 
 class Site
 {
@@ -16,18 +17,33 @@ class Site
         $lowStockProducts = \Model\Product::whereRaw('quantity <= min_norm')->get();
         $lowStockCount = $lowStockProducts->count();
         
-        $recentDeliveries = \Model\Delivery::orderBy('id', 'desc')->limit(5)->get();
-        $recentWriteOffs = \Model\WriteOff::orderBy('id', 'desc')->limit(5)->get();
+        $recentDeliveries = collect(\Model\Delivery::orderBy('id', 'desc')->limit(5)->get()->toArray())
+            ->map(function ($delivery) {
+                $product = \Model\Product::where('name', $delivery['name'])->first();
+                $delivery['unit'] = $product ? $product->unit : 'ед.';
+                $delivery['formatted_price'] = number_format($delivery['price'], 2, '.', ' ') . ' ₽';
+                $delivery['formatted_date'] = date('d.m.Y', strtotime($delivery['date']));
+                return (object)$delivery;
+            })->all();
+
+        $recentWriteOffs = collect(\Model\WriteOff::orderBy('id', 'desc')->limit(5)->get()->toArray())
+            ->map(function ($wo) {
+                $product = \Model\Product::where('name', $wo['name'])->first();
+                $wo['unit'] = $product ? $product->unit : '';
+                $wo['formatted_date'] = date('d.m.Y', strtotime($wo['date']));
+                return (object)$wo;
+            })->all();
+            
         $totalWriteOffs = \Model\WriteOff::count();
         $totalSuppliers = \Model\Supplier::count();
 
         return new View('site.hello', [
             'totalItems' => $totalItems,
-            'lowStockCount' => $lowStockCount,
-            'totalSuppliers' => $totalSuppliers,
+            'lowStockCount' => $lowStockProducts->count(),
+            'totalSuppliers' => \Model\Supplier::count(),
             'ordersToRequest' => $lowStockProducts,
             'recentDeliveries' => $recentDeliveries,
-            'monthlyWriteOffs' => $totalWriteOffs,
+            'monthlyWriteOffs' => \Model\WriteOff::count(),
             'recentWriteOffs' => $recentWriteOffs,
         ]);
     }

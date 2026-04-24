@@ -104,16 +104,12 @@
                     <tr><td colspan="6">Поставок еще не было</td></tr>
                 <?php else: ?>
                     <?php foreach ($recentDeliveries as $delivery): ?>
-                        <?php 
-                            $product = \Model\Product::where('name', $delivery->name)->first();
-                            $unit = $product ? $product->unit : 'ед.'; 
-                        ?>
                         <tr>
                             <td><?= $delivery->name ?></td>
                             <td><?= $delivery->supplier ?></td>
-                            <td><?= $delivery->quantity ?> <?= $unit ?></td>
-                            <td><?= number_format($delivery->price, 2, '.', ' ') ?> ₽</td>
-                            <td><?= date('d.m.Y', strtotime($delivery->date)) ?></td>
+                            <td><?= $delivery->quantity ?> <?= $delivery->unit ?></td>
+                            <td><?= $delivery->formatted_price ?></td>
+                            <td><?= $delivery->formatted_date ?></td>
                         </tr>
                     <?php endforeach; ?>
                 <?php endif; ?>
@@ -140,17 +136,12 @@
             </thead>
             <tbody>
                 <?php foreach ($recentWriteOffs as $wo): ?>
-                    <?php 
-                        $wo = (object) $wo; 
-                        $product = \Model\Product::where('name', $wo->name)->first();
-                        $unit = $product ? $product->unit : '';
-                    ?>
                     <tr>
                         <td><?= $wo->name ?></td>
-                        <td><?= $wo->quantity ?> <?= $unit ?></td>
+                        <td><?= $wo->quantity ?> <?= $wo->unit ?></td>
                         <td><?= $wo->employee ?></td>
                         <td><?= $wo->department ?></td>
-                        <td><?= date('d.m.Y', strtotime($wo->date)) ?></td>
+                        <td><?= $wo->formatted_date ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

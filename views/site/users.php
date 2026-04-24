@@ -61,7 +61,7 @@
                     <?php if ($user->image): ?>
                         <img src="<?= $user->image ?>" alt="avatar" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover;">
                     <?php else: ?>
-                        <div style="width: 70px; height: 70px; background: #ccc; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px;">No фото</div>
+                        <div style="width: 70px; height: 70px; background: #ccc; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px;">Нет фото</div>
                     <?php endif; ?>
                     </td>
                     <td><?= $user->name ?></td>

@@ -920,12 +920,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/maks123m/Server-Practica-Packets.git",
-                "reference": "feb211a12bd18020723333a01c67d83e19f5a17b"
+                "reference": "8feffb656205f97a94f6fc704ae601558c456e4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maks123m/Server-Practica-Packets/zipball/feb211a12bd18020723333a01c67d83e19f5a17b",
-                "reference": "feb211a12bd18020723333a01c67d83e19f5a17b",
+                "url": "https://api.github.com/repos/maks123m/Server-Practica-Packets/zipball/8feffb656205f97a94f6fc704ae601558c456e4e",
+                "reference": "8feffb656205f97a94f6fc704ae601558c456e4e",
                 "shasum": ""
             },
             "require": {
@@ -956,7 +956,7 @@
                 "issues": "https://github.com/maks123m/Server-Practica-Packets/issues",
                 "source": "https://github.com/maks123m/Server-Practica-Packets/tree/main"
             },
-            "time": "2026-04-24T09:59:55+00:00"
+            "time": "2026-04-24T10:41:49+00:00"
         },
         {
             "name": "nesbot/carbon",
