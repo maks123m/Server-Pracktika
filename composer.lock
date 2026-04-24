@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "992655f57aee75c9c240d0a2eec6def1",
+    "content-hash": "42d52a0a606cb4d4a3a8a8061c376bf5",
     "packages": [
         {
             "name": "brick/math",
-            "version": "0.17.0",
+            "version": "0.17.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brick/math.git",
-                "reference": "a62af7ab2e3cee9f9bf4cf77a5d1e6ba408a44ee"
+                "reference": "6aef71a9fbbd1ee7be0e313cd627f8e6f7125a5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brick/math/zipball/a62af7ab2e3cee9f9bf4cf77a5d1e6ba408a44ee",
-                "reference": "a62af7ab2e3cee9f9bf4cf77a5d1e6ba408a44ee",
+                "url": "https://api.github.com/repos/brick/math/zipball/6aef71a9fbbd1ee7be0e313cd627f8e6f7125a5b",
+                "reference": "6aef71a9fbbd1ee7be0e313cd627f8e6f7125a5b",
                 "shasum": ""
             },
             "require": {
@@ -55,7 +55,7 @@
             ],
             "support": {
                 "issues": "https://github.com/brick/math/issues",
-                "source": "https://github.com/brick/math/tree/0.17.0"
+                "source": "https://github.com/brick/math/tree/0.17.1"
             },
             "funding": [
                 {
@@ -63,7 +63,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-03-17T12:54:54+00:00"
+            "time": "2026-04-19T20:55:20+00:00"
         },
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -236,12 +236,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/bus.git",
-                "reference": "a97e9f13c8b889579196200ec53fe9256a6536ff"
+                "reference": "eb81f4c87dc379c45e5c59fe1a3dd38e25fe8c80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/bus/zipball/a97e9f13c8b889579196200ec53fe9256a6536ff",
-                "reference": "a97e9f13c8b889579196200ec53fe9256a6536ff",
+                "url": "https://api.github.com/repos/illuminate/bus/zipball/eb81f4c87dc379c45e5c59fe1a3dd38e25fe8c80",
+                "reference": "eb81f4c87dc379c45e5c59fe1a3dd38e25fe8c80",
                 "shasum": ""
             },
             "require": {
@@ -281,7 +281,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-04-15T14:50:23+00:00"
+            "time": "2026-04-22T13:52:54+00:00"
         },
         {
             "name": "illuminate/collections",
@@ -289,12 +289,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
-                "reference": "bbd07874dc25e4a5238edf7a55edff3eaea32929"
+                "reference": "8df42c81f8295578f85604a6de15804a016fd63d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/collections/zipball/bbd07874dc25e4a5238edf7a55edff3eaea32929",
-                "reference": "bbd07874dc25e4a5238edf7a55edff3eaea32929",
+                "url": "https://api.github.com/repos/illuminate/collections/zipball/8df42c81f8295578f85604a6de15804a016fd63d",
+                "reference": "8df42c81f8295578f85604a6de15804a016fd63d",
                 "shasum": ""
             },
             "require": {
@@ -340,7 +340,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-04-14T18:18:24+00:00"
+            "time": "2026-04-23T16:59:35+00:00"
         },
         {
             "name": "illuminate/conditionable",
@@ -456,12 +456,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "022d9816b4ff052a3db5946a86be3cd2e224db0f"
+                "reference": "52a8c6a7d904e5477cf07e0ef483d0170cf6f8e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/022d9816b4ff052a3db5946a86be3cd2e224db0f",
-                "reference": "022d9816b4ff052a3db5946a86be3cd2e224db0f",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/52a8c6a7d904e5477cf07e0ef483d0170cf6f8e4",
+                "reference": "52a8c6a7d904e5477cf07e0ef483d0170cf6f8e4",
                 "shasum": ""
             },
             "require": {
@@ -496,7 +496,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-04-12T17:46:48+00:00"
+            "time": "2026-04-22T13:28:51+00:00"
         },
         {
             "name": "illuminate/database",
@@ -504,12 +504,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "5156be14e2816467e51910614f822868335cce98"
+                "reference": "fcc33cabcee21709b30bcb87d1724eaddfe350be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/5156be14e2816467e51910614f822868335cce98",
-                "reference": "5156be14e2816467e51910614f822868335cce98",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/fcc33cabcee21709b30bcb87d1724eaddfe350be",
+                "reference": "fcc33cabcee21709b30bcb87d1724eaddfe350be",
                 "shasum": ""
             },
             "require": {
@@ -567,7 +567,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-04-16T13:44:12+00:00"
+            "time": "2026-04-22T13:37:55+00:00"
         },
         {
             "name": "illuminate/events",
@@ -779,12 +779,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "e6156fd2a351d21d55dd3eee22ae7d05e4a05e56"
+                "reference": "d2910ffcd07df055a445bc61750a7f6a3ec8421e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/e6156fd2a351d21d55dd3eee22ae7d05e4a05e56",
-                "reference": "e6156fd2a351d21d55dd3eee22ae7d05e4a05e56",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/d2910ffcd07df055a445bc61750a7f6a3ec8421e",
+                "reference": "d2910ffcd07df055a445bc61750a7f6a3ec8421e",
                 "shasum": ""
             },
             "require": {
@@ -850,7 +850,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-04-16T14:35:15+00:00"
+            "time": "2026-04-22T13:52:54+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -915,17 +915,61 @@
             "time": "2026-04-16T14:03:50+00:00"
         },
         {
+            "name": "maks123m/collect",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maks123m/Server-Practica-Packets.git",
+                "reference": "feb211a12bd18020723333a01c67d83e19f5a17b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maks123m/Server-Practica-Packets/zipball/feb211a12bd18020723333a01c67d83e19f5a17b",
+                "reference": "feb211a12bd18020723333a01c67d83e19f5a17b",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4 | ^8.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Collect\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "maks123m",
+                    "email": "maksmamix0@gmail.com"
+                }
+            ],
+            "description": "Module for working with arrays",
+            "support": {
+                "issues": "https://github.com/maks123m/Server-Practica-Packets/issues",
+                "source": "https://github.com/maks123m/Server-Practica-Packets/tree/main"
+            },
+            "time": "2026-04-24T09:59:55+00:00"
+        },
+        {
             "name": "nesbot/carbon",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CarbonPHP/carbon.git",
-                "reference": "9b04563ba6a3fc04ed46d63c5718223d3900e88e"
+                "reference": "7a342129e15e7568ff888bb2a5017b9c1c5a5805"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CarbonPHP/carbon/zipball/9b04563ba6a3fc04ed46d63c5718223d3900e88e",
-                "reference": "9b04563ba6a3fc04ed46d63c5718223d3900e88e",
+                "url": "https://api.github.com/repos/CarbonPHP/carbon/zipball/7a342129e15e7568ff888bb2a5017b9c1c5a5805",
+                "reference": "7a342129e15e7568ff888bb2a5017b9c1c5a5805",
                 "shasum": ""
             },
             "require": {
@@ -1018,7 +1062,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-04-15T06:07:03+00:00"
+            "time": "2026-04-18T11:02:08+00:00"
         },
         {
             "name": "nikic/fast-route",
@@ -1300,12 +1344,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/clock.git",
-                "reference": "7e0614c699e44c7739a5270ffe1087448ec1027d"
+                "reference": "6682f8cd56bece5f8e1062c5c2ac46b9e0c38bab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/clock/zipball/7e0614c699e44c7739a5270ffe1087448ec1027d",
-                "reference": "7e0614c699e44c7739a5270ffe1087448ec1027d",
+                "url": "https://api.github.com/repos/symfony/clock/zipball/6682f8cd56bece5f8e1062c5c2ac46b9e0c38bab",
+                "reference": "6682f8cd56bece5f8e1062c5c2ac46b9e0c38bab",
                 "shasum": ""
             },
             "require": {
@@ -1370,7 +1414,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-04-07T06:26:27+00:00"
+            "time": "2026-04-18T13:52:23+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1626,12 +1670,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "28fa43662c45cfbdc701676952b96ded47d8d181"
+                "reference": "c560e854172f432389119cd8868f8f20794461d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/28fa43662c45cfbdc701676952b96ded47d8d181",
-                "reference": "28fa43662c45cfbdc701676952b96ded47d8d181",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/c560e854172f432389119cd8868f8f20794461d6",
+                "reference": "c560e854172f432389119cd8868f8f20794461d6",
                 "shasum": ""
             },
             "require": {
@@ -1712,7 +1756,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-04-13T15:52:40+00:00"
+            "time": "2026-04-18T13:52:23+00:00"
         },
         {
             "name": "symfony/translation-contracts",
@@ -1878,6 +1922,7 @@
     "stability-flags": {
         "illuminate/database": 20,
         "illuminate/events": 20,
+        "maks123m/collect": 20,
         "nikic/fast-route": 20
     },
     "prefer-stable": false,
