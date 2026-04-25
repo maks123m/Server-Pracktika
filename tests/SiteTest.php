@@ -58,9 +58,6 @@ namespace {
             $subdivision = Subdivision::where('name', $uniqueName)->first();
             $this->assertNotNull($subdivision, "Ошибка: Подразделение не появилось в БД!");
             
-            if ($subdivision) {
-                $subdivision->delete();
-            }
         }
 
         public function testLoginFailure(): void
